@@ -18,7 +18,7 @@ object Constants {
 	val JDBC_PASSWORD = "jdbc.password"
 
 	val KAFKA_TOPICS = "kafka.topics"
-	
+	val KAFKA_BROKERS = "kafka.broker.list"
 	/**
 	 * Spark作业相关的常量
 	 */
