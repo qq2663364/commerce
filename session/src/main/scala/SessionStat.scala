@@ -578,12 +578,13 @@ object SessionStat {
   }
 
   def main(args: Array[String]): Unit = {
+    //获取任务限制条件
     val jsonStr: String = ConfigurationManager.config.getString(Constants.TASK_PARAMS)
 
     val taskParam: JSONObject = JSONObject.fromObject(jsonStr)
-
+    //获取唯一主键
     val taskUUID: String = UUID.randomUUID().toString
-
+    //创建sparkConf
     val conf: SparkConf = new SparkConf().setMaster("local[*]").setAppName("session")
 
     val sc: SparkSession = SparkSession.builder().config(conf).enableHiveSupport().getOrCreate()
@@ -618,6 +619,8 @@ object SessionStat {
     val top10CategoryArray = top10PopularCategories(sc, taskUUID, sessionId2FilterActionRDD)
     //需求四:top10热门商品的top10活跃session统计
     top10ActiveSession(sc,taskUUID,sessionId2FilterActionRDD,top10CategoryArray)
+
+
   }
 
 }
