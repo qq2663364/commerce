@@ -101,9 +101,14 @@ object AreaTop3Stat {
 
     val top3ProductRDD: RDD[AreaTop3Product] = sparkSession.sql(sql).rdd.map {
       case row =>
-        AreaTop3Product(taskUUID, row.getAs[String]("area"), row.getAs[String]("area_level"),
-          row.getAs[Long]("pid"), row.getAs[String]("city_infos"),
-          row.getAs[Long]("click_count"), row.getAs[String]("product_name"),
+        AreaTop3Product(
+          taskUUID,
+          row.getAs[String]("area"),
+          row.getAs[String]("area_level"),
+          row.getAs[Long]("pid"),
+          row.getAs[String]("city_infos"),
+          row.getAs[Long]("click_count"),
+          row.getAs[String]("product_name"),
           row.getAs[String]("product_status"))
     }
 
